@@ -495,6 +495,74 @@ html, body {
   }
 }
 
+/* Cyber Inputs and Form Controls for SLT Portal */
+.cyber-input, .cyber-select, .cyber-textarea {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  padding: 12px 16px;
+  color: #fff;
+  font-size: 14px;
+  font-family: inherit;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.cyber-input:focus, .cyber-select:focus, .cyber-textarea:focus {
+  border-color: var(--cyan);
+  box-shadow: 0 0 10px rgba(0, 240, 255, 0.2);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.cyber-select option {
+  background: var(--bg-color);
+  color: #fff;
+}
+
+/* Status Badges */
+.badge {
+  font-family: var(--font-geist-mono);
+  font-size: 9px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 3px 8px;
+  border-radius: 4px;
+  display: inline-block;
+}
+
+.badge-resolved {
+  background: rgba(0, 255, 127, 0.1);
+  border: 1px solid rgba(0, 255, 127, 0.3);
+  color: #00ff7f;
+  text-shadow: 0 0 8px rgba(0, 255, 127, 0.3);
+}
+
+.badge-progress {
+  background: rgba(0, 240, 255, 0.1);
+  border: 1px solid rgba(0, 240, 255, 0.3);
+  color: var(--cyan);
+  text-shadow: 0 0 8px var(--cyan-glow);
+}
+
+.badge-pending {
+  background: rgba(255, 170, 0, 0.1);
+  border: 1px solid rgba(255, 170, 0, 0.3);
+  color: #ffaa00;
+  text-shadow: 0 0 8px rgba(255, 170, 0, 0.3);
+}
+
+/* Solution Box inside complaints dashboard */
+.solution-box {
+  background: rgba(0, 255, 127, 0.02);
+  border: 1px dashed rgba(0, 255, 127, 0.2);
+  border-radius: 6px;
+  padding: 12px;
+  margin-top: 12px;
+}
+
+
 /* Info Card Highlighting styles (legibility upgrade) */
 .info-card {
   background: rgba(255, 255, 255, 0.03);
