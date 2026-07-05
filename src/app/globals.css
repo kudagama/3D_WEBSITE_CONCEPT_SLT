@@ -482,3 +482,16 @@ html, body {
   }
 }
 
+/* Adjust Drei Stats panel position to prevent overlapping text */
+.r3f-stats-panel {
+  top: 80px !important;
+  left: 40px !important;
+}
+
+@media (max-width: 768px) {
+  .r3f-stats-panel {
+    top: 70px !important;
+    left: 16px !important;
+  }
+}
+
