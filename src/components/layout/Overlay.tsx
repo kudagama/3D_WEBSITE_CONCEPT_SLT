@@ -286,7 +286,7 @@ export default function Overlay({ currentSection, waveParamsRef }: OverlayProps)
               {broadbandPlans
                 .filter((p) => p.category === activeTabSec1 && p.popular)
                 .map((plan) => (
-                  <div key={plan.id} style={{ background: 'rgba(255, 255, 255, 0.03)', border: '1px solid rgba(0, 240, 255, 0.2)', padding: '16px', borderRadius: '8px' }}>
+                  <div key={plan.id} className="info-card cyan-featured">
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
                       <span style={{ fontSize: '12px', color: 'var(--cyan)', textTransform: 'uppercase', fontWeight: 'bold' }}>Featured Package</span>
                       <span style={{ fontSize: '16px', fontWeight: 'bold', color: '#fff' }}>{plan.price}</span>
@@ -302,7 +302,7 @@ export default function Overlay({ currentSection, waveParamsRef }: OverlayProps)
                 .filter((p) => p.category === activeTabSec1 && !p.popular)
                 .slice(0, 1)
                 .map((plan) => (
-                  <div key={plan.id} style={{ background: 'rgba(255, 255, 255, 0.01)', border: '1px solid var(--border-color)', padding: '16px', borderRadius: '8px', marginTop: '10px' }}>
+                  <div key={plan.id} className="info-card" style={{ marginTop: '10px' }}>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
                       <span style={{ fontSize: '12px', color: 'var(--text-muted)' }}>Entry Pack</span>
                       <span style={{ fontSize: '15px', fontWeight: 'bold', color: '#fff' }}>{plan.price}</span>
@@ -372,12 +372,12 @@ export default function Overlay({ currentSection, waveParamsRef }: OverlayProps)
               {activeTabSec2 === 'peotv' && (
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
                   {peotvPlans.slice(0, 2).map((pack, idx) => (
-                    <div key={idx} style={{ display: 'flex', justifyContent: 'space-between', borderBottom: '1px solid var(--border-color)', paddingBottom: '8px' }}>
+                    <div key={idx} className="info-card magenta-featured" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: idx === 0 ? '8px' : '0px' }}>
                       <div>
                         <div style={{ fontWeight: 'bold', color: '#fff', fontSize: '14px' }}>{pack.name} ({pack.channels})</div>
                         <div style={{ fontSize: '11px', color: 'var(--text-muted)' }}>{pack.desc}</div>
                       </div>
-                      <div style={{ color: 'var(--magenta)', fontWeight: 'bold', fontSize: '14px' }}>{pack.price}</div>
+                      <div style={{ color: 'var(--magenta)', fontWeight: 'bold', fontSize: '14px', marginLeft: '12px', whiteSpace: 'nowrap' }}>{pack.price}</div>
                     </div>
                   ))}
                 </div>
@@ -385,12 +385,12 @@ export default function Overlay({ currentSection, waveParamsRef }: OverlayProps)
 
               {activeTabSec2 === 'vod' && (
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-                  <div style={{ background: 'rgba(255, 255, 255, 0.02)', padding: '12px', borderLeft: '2px solid var(--magenta)', borderRadius: '4px' }}>
+                  <div className="info-card magenta-featured" style={{ borderLeftWidth: '3px' }}>
                     <div style={{ fontWeight: 'bold', fontSize: '14px' }}>Filmhall Unlimited</div>
                     <div style={{ fontSize: '12px', color: 'var(--text-muted)', margin: '4px 0' }}>Access blockbusters, teledramas, and music videos.</div>
                     <div style={{ fontSize: '13px', color: 'var(--magenta)', fontWeight: 'bold' }}>LKR 199/mo</div>
                   </div>
-                  <div style={{ background: 'rgba(255, 255, 255, 0.02)', padding: '12px', borderLeft: '2px solid var(--magenta)', borderRadius: '4px' }}>
+                  <div className="info-card magenta-featured" style={{ borderLeftWidth: '3px', marginTop: '10px' }}>
                     <div style={{ fontWeight: 'bold', fontSize: '14px' }}>Video-On-Demand (VOD) Library</div>
                     <div style={{ fontSize: '12px', color: 'var(--text-muted)', margin: '4px 0' }}>Educational lectures, local movies, and documentaries.</div>
                     <div style={{ fontSize: '13px', color: 'var(--magenta)', fontWeight: 'bold' }}>LKR 299/mo</div>
@@ -400,19 +400,19 @@ export default function Overlay({ currentSection, waveParamsRef }: OverlayProps)
 
               {activeTabSec2 === 'ott' && (
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'rgba(255, 255, 255, 0.02)', padding: '10px 16px', borderRadius: '4px' }}>
+                  <div className="info-card magenta-featured" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                     <div>
                       <div style={{ fontWeight: 'bold', fontSize: '14px' }}>YouTube Unlimited Add-on</div>
                       <div style={{ fontSize: '11px', color: 'var(--text-muted)' }}>Continuous HD streaming for standard broadband lines</div>
                     </div>
-                    <div style={{ color: 'var(--magenta)', fontWeight: 'bold' }}>LKR 299</div>
+                    <div style={{ color: 'var(--magenta)', fontWeight: 'bold', marginLeft: '12px', whiteSpace: 'nowrap' }}>LKR 299</div>
                   </div>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'rgba(255, 255, 255, 0.02)', padding: '10px 16px', borderRadius: '4px' }}>
+                  <div className="info-card magenta-featured" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '10px' }}>
                     <div>
                       <div style={{ fontWeight: 'bold', fontSize: '14px' }}>7xFun Add-on</div>
                       <div style={{ fontSize: '11px', color: 'var(--text-muted)' }}>Unlimited WhatsApp, Viber, Messenger, Telegram, Spotify, at 4G speeds</div>
                     </div>
-                    <div style={{ color: 'var(--magenta)', fontWeight: 'bold' }}>LKR 349</div>
+                    <div style={{ color: 'var(--magenta)', fontWeight: 'bold', marginLeft: '12px', whiteSpace: 'nowrap' }}>LKR 349</div>
                   </div>
                 </div>
               )}
@@ -478,12 +478,12 @@ export default function Overlay({ currentSection, waveParamsRef }: OverlayProps)
                   <p style={{ color: 'var(--text-muted)', fontSize: '13px', lineHeight: 1.5 }}>
                     Empower your start-up or micro business with robust connectivity solutions, virtual domain registrations, and cloud voice channels.
                   </p>
-                  <div style={{ border: '1px solid var(--border-color)', padding: '12px', borderRadius: '6px', background: 'rgba(255,255,255,0.01)' }}>
+                  <div className="info-card violet-featured">
                     <div style={{ fontWeight: 'bold', fontSize: '14px', color: '#fff' }}>SME Biz Fibre Lite</div>
                     <div style={{ fontSize: '11px', color: 'var(--text-muted)', margin: '4px 0' }}>Uncapped bandwidth during business hours, 1 static IP address.</div>
                     <div style={{ fontSize: '13px', color: 'var(--violet)', fontWeight: 'bold' }}>LKR 4,990/mo</div>
                   </div>
-                  <div style={{ border: '1px solid var(--border-color)', padding: '12px', borderRadius: '6px', background: 'rgba(255,255,255,0.01)' }}>
+                  <div className="info-card violet-featured" style={{ marginTop: '10px' }}>
                     <div style={{ fontWeight: 'bold', fontSize: '14px', color: '#fff' }}>Biz Cloud Office Suite</div>
                     <div style={{ fontSize: '11px', color: 'var(--text-muted)', margin: '4px 0' }}>Includes 5 corporate emails, 50 GB cloud drive space, domain support.</div>
                     <div style={{ fontSize: '13px', color: 'var(--violet)', fontWeight: 'bold' }}>LKR 9,990/mo</div>
@@ -492,7 +492,7 @@ export default function Overlay({ currentSection, waveParamsRef }: OverlayProps)
               )}
 
               {activeTabSec3 === 'cloud' && (
-                <div style={{ background: 'rgba(139, 92, 246, 0.03)', padding: '20px', borderRadius: '8px', border: '1px solid rgba(139, 92, 246, 0.2)' }}>
+                <div className="info-card violet-featured" style={{ padding: '20px' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px' }}>
                     <Database size={16} style={{ color: 'var(--violet)' }} />
                     <span style={{ fontSize: '12px', fontWeight: 'bold', textTransform: 'uppercase' }}>Custom VM Configurator</span>
@@ -553,19 +553,19 @@ export default function Overlay({ currentSection, waveParamsRef }: OverlayProps)
                   <p style={{ color: 'var(--text-muted)', fontSize: '13px', lineHeight: 1.5 }}>
                     Protect your computing nodes from malware threats and telemetry surveillance. Fully managed end-point security powered by Kaspersky.
                   </p>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid var(--border-color)', paddingBottom: '8px' }}>
+                  <div className="info-card violet-featured" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                     <div>
                       <div style={{ fontWeight: 'bold', fontSize: '14px' }}>Kaspersky internet Security (Home)</div>
                       <div style={{ fontSize: '11px', color: 'var(--text-muted)' }}>License for 3 devices, standard adware block.</div>
                     </div>
-                    <div style={{ color: 'var(--violet)', fontWeight: 'bold' }}>LKR 150/mo</div>
+                    <div style={{ color: 'var(--violet)', fontWeight: 'bold', marginLeft: '12px', whiteSpace: 'nowrap' }}>LKR 150/mo</div>
                   </div>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid var(--border-color)', paddingBottom: '8px' }}>
+                  <div className="info-card violet-featured" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '10px' }}>
                     <div>
                       <div style={{ fontWeight: 'bold', fontSize: '14px' }}>Enterprise Secure Shield</div>
                       <div style={{ fontSize: '11px', color: 'var(--text-muted)' }}>Cloud-managed threat control console, endpoint logs.</div>
                     </div>
-                    <div style={{ color: 'var(--violet)', fontWeight: 'bold' }}>LKR 1,200/mo</div>
+                    <div style={{ color: 'var(--violet)', fontWeight: 'bold', marginLeft: '12px', whiteSpace: 'nowrap' }}>LKR 1,200/mo</div>
                   </div>
                 </div>
               )}
@@ -671,7 +671,7 @@ export default function Overlay({ currentSection, waveParamsRef }: OverlayProps)
               </div>
 
               {/* Status and Pack info */}
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', background: 'rgba(255,255,255,0.02)', padding: '16px', borderRadius: '6px', border: '1px solid var(--border-color)' }}>
+              <div className="info-card cyan-featured" style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
                 <div style={{ fontSize: '11px', borderBottom: '1px solid var(--border-color)', paddingBottom: '6px' }}>
                   <span style={{ color: 'var(--text-muted)' }}>Signal Status: </span>
                   <strong style={{ color: getSignalStrength(amp).color }}>{getSignalStrength(amp).label}</strong>

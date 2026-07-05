@@ -52,10 +52,10 @@ html, body {
 
 /* Glassmorphism CSS Utilities */
 .glass-panel {
-  background: var(--bg-glass);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid var(--border-color);
+  background: rgba(10, 10, 18, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 12px;
   color: var(--text-color);
 }
@@ -494,4 +494,59 @@ html, body {
     left: 16px !important;
   }
 }
+
+/* Info Card Highlighting styles (legibility upgrade) */
+.info-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 16px;
+  border-radius: 8px;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.info-card:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+/* Featured / Popular cards with cyan highlighting */
+.info-card.cyan-featured {
+  background: rgba(0, 240, 255, 0.03);
+  border: 1px solid rgba(0, 240, 255, 0.2);
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.05);
+}
+
+.info-card.cyan-featured:hover {
+  background: rgba(0, 240, 255, 0.06);
+  border-color: var(--cyan);
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.15);
+}
+
+/* Featured / Popular cards with magenta highlighting */
+.info-card.magenta-featured {
+  background: rgba(255, 0, 127, 0.03);
+  border: 1px solid rgba(255, 0, 127, 0.2);
+  box-shadow: 0 0 15px rgba(255, 0, 127, 0.05);
+}
+
+.info-card.magenta-featured:hover {
+  background: rgba(255, 0, 127, 0.06);
+  border-color: var(--magenta);
+  box-shadow: 0 0 20px rgba(255, 0, 127, 0.15);
+}
+
+/* Featured / Popular cards with violet highlighting */
+.info-card.violet-featured {
+  background: rgba(139, 92, 246, 0.03);
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  box-shadow: 0 0 15px rgba(139, 92, 246, 0.05);
+}
+
+.info-card.violet-featured:hover {
+  background: rgba(139, 92, 246, 0.06);
+  border-color: var(--violet);
+  box-shadow: 0 0 20px rgba(139, 92, 246, 0.15);
+}
+
 
