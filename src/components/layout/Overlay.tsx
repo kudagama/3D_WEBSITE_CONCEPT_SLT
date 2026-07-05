@@ -129,21 +129,7 @@ export default function Overlay({ currentSection, waveParamsRef }: OverlayProps)
       {/* ========================================================================= */}
       {/* 1. HUD / TOP HEADER */}
       {/* ========================================================================= */}
-      <header
-        className="glass-hud"
-        style={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          width: '100%',
-          padding: '16px 40px',
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          pointerEvents: 'auto',
-          zIndex: 100,
-        }}
-      >
+      <header className="glass-hud hud-header">
         <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
           <div
             style={{
@@ -169,17 +155,7 @@ export default function Overlay({ currentSection, waveParamsRef }: OverlayProps)
         </div>
 
         {/* HUD Telemetry Stats */}
-        <div
-          style={{
-            display: 'flex',
-            gap: '32px',
-            fontSize: '11px',
-            fontFamily: 'var(--font-geist-mono)',
-            textTransform: 'uppercase',
-            color: 'var(--text-muted)',
-          }}
-          className="hud-stats-container"
-        >
+        <div className="hud-stats-container">
           <div style={{ display: 'flex', flexDirection: 'column' }}>
             <span>Throughput</span>
             <span style={{ color: 'var(--cyan)', fontWeight: 'bold' }}>{telemetry.bandwidth} Gbps</span>
@@ -212,19 +188,7 @@ export default function Overlay({ currentSection, waveParamsRef }: OverlayProps)
       {/* ========================================================================= */}
       {/* 2. FLOATING INDICATORS (LEFT) */}
       {/* ========================================================================= */}
-      <div
-        style={{
-          position: 'fixed',
-          left: '40px',
-          top: '50%',
-          transform: 'translateY(-50%)',
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '24px',
-          pointerEvents: 'auto',
-          zIndex: 50,
-        }}
-      >
+      <div className="section-nav">
         {[0, 1, 2, 3].map((sec) => (
           <div
             key={sec}
@@ -278,8 +242,8 @@ export default function Overlay({ currentSection, waveParamsRef }: OverlayProps)
         {/* ------------------------------------------------------------------------- */}
         {/* SECTION 1: Fixed Broadband & SLT Fiber (Globe) */}
         {/* ------------------------------------------------------------------------- */}
-        <section className="scroll-section">
-          <div className="glass-panel" style={{ maxWidth: '520px', padding: '40px', pointerEvents: 'auto' }}>
+        <section className="scroll-section section-1">
+          <div className="glass-panel overlay-panel">
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '16px' }}>
               <Globe size={18} className="glow-text-cyan" />
               <span style={{ fontSize: '11px', fontFamily: 'var(--font-geist-mono)', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--cyan)' }}>
@@ -287,11 +251,11 @@ export default function Overlay({ currentSection, waveParamsRef }: OverlayProps)
               </span>
             </div>
             
-            <h1 style={{ fontSize: '38px', fontWeight: 800, lineHeight: 1.1, marginBottom: '16px', letterSpacing: '-0.02em' }}>
+            <h1 className="section-title">
               SLT Fiber & <br />Broadband Network
             </h1>
             
-            <p style={{ color: 'var(--text-muted)', fontSize: '14px', lineHeight: 1.6, marginBottom: '20px' }}>
+            <p className="section-desc">
               High-speed fixed network infrastructure connecting homes and businesses across Sri Lanka with next-gen fiber optic pipelines.
             </p>
 
@@ -364,8 +328,8 @@ export default function Overlay({ currentSection, waveParamsRef }: OverlayProps)
         {/* ------------------------------------------------------------------------- */}
         {/* SECTION 2: PEOTV & Digital Entertainment (Tunnel) */}
         {/* ------------------------------------------------------------------------- */}
-        <section className="scroll-section" style={{ alignItems: 'flex-end' }}>
-          <div className="glass-panel" style={{ maxWidth: '520px', padding: '40px', pointerEvents: 'auto' }}>
+        <section className="scroll-section section-2">
+          <div className="glass-panel overlay-panel">
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '16px' }}>
               <Zap size={18} style={{ color: 'var(--magenta)' }} />
               <span style={{ fontSize: '11px', fontFamily: 'var(--font-geist-mono)', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--magenta)' }}>
@@ -373,11 +337,11 @@ export default function Overlay({ currentSection, waveParamsRef }: OverlayProps)
               </span>
             </div>
             
-            <h2 style={{ fontSize: '38px', fontWeight: 800, lineHeight: 1.1, marginBottom: '16px', letterSpacing: '-0.02em' }}>
+            <h2 className="section-title">
               PEOTV & Digital <br />Entertainment
             </h2>
             
-            <p style={{ color: 'var(--text-muted)', fontSize: '14px', lineHeight: 1.6, marginBottom: '20px' }}>
+            <p className="section-desc">
               Enjoy standard definition and high-definition channels, premium sports network nodes, and dedicated Video on Demand portals.
             </p>
 
@@ -472,8 +436,8 @@ export default function Overlay({ currentSection, waveParamsRef }: OverlayProps)
         {/* ------------------------------------------------------------------------- */}
         {/* SECTION 3: SME & Enterprise Cloud Solutions (City Grid) */}
         {/* ------------------------------------------------------------------------- */}
-        <section className="scroll-section">
-          <div className="glass-panel" style={{ maxWidth: '520px', padding: '40px', pointerEvents: 'auto' }}>
+        <section className="scroll-section section-3">
+          <div className="glass-panel overlay-panel">
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '16px' }}>
               <Cpu size={18} style={{ color: 'var(--violet)' }} />
               <span style={{ fontSize: '11px', fontFamily: 'var(--font-geist-mono)', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--violet)' }}>
@@ -481,7 +445,7 @@ export default function Overlay({ currentSection, waveParamsRef }: OverlayProps)
               </span>
             </div>
             
-            <h2 style={{ fontSize: '38px', fontWeight: 800, lineHeight: 1.1, marginBottom: '16px', letterSpacing: '-0.02em' }}>
+            <h2 className="section-title">
               Enterprise & Cloud <br />Infrastructure
             </h2>
 
@@ -612,8 +576,8 @@ export default function Overlay({ currentSection, waveParamsRef }: OverlayProps)
         {/* ------------------------------------------------------------------------- */}
         {/* SECTION 4: Mobile & mCash Modulator (Signal Modulator) */}
         {/* ------------------------------------------------------------------------- */}
-        <section className="scroll-section" style={{ alignItems: 'center' }}>
-          <div className="glass-panel" style={{ width: '100%', maxWidth: '620px', padding: '40px', pointerEvents: 'auto' }}>
+        <section className="scroll-section section-4">
+          <div className="glass-panel overlay-panel">
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '16px' }}>
               <Radio size={18} className="glow-text-cyan" />
               <span style={{ fontSize: '11px', fontFamily: 'var(--font-geist-mono)', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--cyan)' }}>
@@ -621,7 +585,7 @@ export default function Overlay({ currentSection, waveParamsRef }: OverlayProps)
               </span>
             </div>
             
-            <h2 style={{ fontSize: '36px', fontWeight: 800, lineHeight: 1.1, marginBottom: '16px', letterSpacing: '-0.02em', textAlign: 'center' }}>
+            <h2 className="section-title" style={{ textAlign: 'center' }}>
               Wireless & Mobile money Modulator
             </h2>
 
@@ -642,9 +606,9 @@ export default function Overlay({ currentSection, waveParamsRef }: OverlayProps)
             </div>
 
             {/* Left/Right layouts: Sliders and info details */}
-            <div style={{ display: 'flex', gap: '30px', flexWrap: 'wrap' }}>
+            <div className="section-4-flex">
               {/* Sliders (Controls the shader) */}
-              <div style={{ flex: 1.2, display: 'flex', flexDirection: 'column', gap: '16px' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
                 <div>
                   <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '4px', fontSize: '11px', fontFamily: 'var(--font-geist-mono)' }}>
                     <span>Carrier Band Frequency</span>
@@ -707,7 +671,7 @@ export default function Overlay({ currentSection, waveParamsRef }: OverlayProps)
               </div>
 
               {/* Status and Pack info */}
-              <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '16px', background: 'rgba(255,255,255,0.02)', padding: '16px', borderRadius: '6px', border: '1px solid var(--border-color)' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', background: 'rgba(255,255,255,0.02)', padding: '16px', borderRadius: '6px', border: '1px solid var(--border-color)' }}>
                 <div style={{ fontSize: '11px', borderBottom: '1px solid var(--border-color)', paddingBottom: '6px' }}>
                   <span style={{ color: 'var(--text-muted)' }}>Signal Status: </span>
                   <strong style={{ color: getSignalStrength(amp).color }}>{getSignalStrength(amp).label}</strong>
@@ -749,25 +713,7 @@ export default function Overlay({ currentSection, waveParamsRef }: OverlayProps)
       {/* ========================================================================= */}
       {/* 4. FOOTER STATUS BAR */}
       {/* ========================================================================= */}
-      <footer
-        style={{
-          position: 'fixed',
-          bottom: 0,
-          left: 0,
-          width: '100%',
-          padding: '12px 40px',
-          display: 'flex',
-          justifyContent: 'space-between',
-          fontSize: '9px',
-          fontFamily: 'var(--font-geist-mono)',
-          textTransform: 'uppercase',
-          letterSpacing: '0.15em',
-          color: 'var(--text-muted)',
-          borderTop: '1px solid var(--border-color)',
-          background: 'rgba(3, 3, 7, 0.8)',
-          zIndex: 100,
-        }}
-      >
+      <footer className="hud-footer">
         <div style={{ display: 'flex', gap: '20px' }}>
           <span>FPS: 60 / LOCK</span>
           <span>GPU: RENDERER // CORE</span>

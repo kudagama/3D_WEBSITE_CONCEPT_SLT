@@ -25,8 +25,8 @@ function CameraController({ setSection }: { setSection: (section: number) => voi
   const targetCamPos = useRef(new THREE.Vector3(0, 0, 8));
   const targetCamLook = useRef(new THREE.Vector3(0, 0, 0));
 
-  // Define spatial points for each section
-  const sections = [
+  // Define spatial points for desktop landscape viewports
+  const desktopSections = [
     {
       // Sector 1: Globe
       camPos: new THREE.Vector3(0, 0, 8),
@@ -49,6 +49,30 @@ function CameraController({ setSection }: { setSection: (section: number) => voi
     },
   ];
 
+  // Define spatial points for mobile portrait viewports to compensate for narrow aspect ratio (FOV shrinkage)
+  const mobileSections = [
+    {
+      // Sector 1: Globe (Position camera further back and slightly offset to center globe in mobile window)
+      camPos: new THREE.Vector3(0, 0.8, 11),
+      lookAt: new THREE.Vector3(0, 0.3, 0),
+    },
+    {
+      // Sector 2: Tunnel (Position camera further back to maintain full-spline visual tunnel experience)
+      camPos: new THREE.Vector3(0, -30, 20),
+      lookAt: new THREE.Vector3(0, -30, -20),
+    },
+    {
+      // Sector 3: Smart City (Position camera higher and wider angle to capture details clearly)
+      camPos: new THREE.Vector3(50, 16, -14),
+      lookAt: new THREE.Vector3(30, -4, -30),
+    },
+    {
+      // Sector 4: Wave Modulator (Increase height/depth to frame full network wave plane)
+      camPos: new THREE.Vector3(0, 48, 52),
+      lookAt: new THREE.Vector3(0, 26, 30),
+    },
+  ];
+
   useFrame((state) => {
     // 1. Calculate global scroll percentage
     const scrollY = window.scrollY || 0;
@@ -59,20 +83,24 @@ function CameraController({ setSection }: { setSection: (section: number) => voi
     const sectionIndex = Math.min(Math.floor(progress * 4), 3);
     setSection(sectionIndex);
 
+    // Detect mobile size
+    const isMobile = state.size.width < 768;
+    const activeSections = isMobile ? mobileSections : desktopSections;
+
     // 2. Interpolate camera position and target vectors based on progress
     const segment = progress * 3; // 3 segments for 4 points
     const index = Math.floor(segment);
     const fraction = segment - index;
 
     if (index >= 0 && index < 3) {
-      const start = sections[index];
-      const end = sections[index + 1];
+      const start = activeSections[index];
+      const end = activeSections[index + 1];
 
       targetCamPos.current.lerpVectors(start.camPos, end.camPos, fraction);
       targetCamLook.current.lerpVectors(start.lookAt, end.lookAt, fraction);
     } else {
       // Out of bounds safety
-      const end = sections[3];
+      const end = activeSections[3];
       targetCamPos.current.copy(end.camPos);
       targetCamLook.current.copy(end.lookAt);
     }

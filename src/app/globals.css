@@ -256,3 +256,229 @@ html, body {
   cursor: pointer;
   margin-top: 6px;
 }
+
+/* ========================================================================= */
+/* RESPONSIVE & MOBILE DESIGN UPGRADE (AntiGravity Implementation) */
+/* ========================================================================= */
+
+/* HUD Header Layout styling */
+.hud-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 16px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  pointer-events: auto;
+  z-index: 100;
+  transition: padding 0.3s ease;
+}
+
+/* Telemetry display */
+.hud-stats-container {
+  display: flex;
+  gap: 32px;
+  font-size: 11px;
+  font-family: var(--font-geist-mono);
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+/* Left floating side nav */
+.section-nav {
+  position: fixed;
+  left: 40px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  pointer-events: auto;
+  z-index: 50;
+}
+
+/* Base overlay panel layout inside scroll sections */
+.overlay-panel {
+  width: 100%;
+  max-width: 520px;
+  padding: 40px;
+  pointer-events: auto;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.scroll-section.section-4 .overlay-panel {
+  max-width: 620px;
+}
+
+/* Standardized responsive typography class */
+.section-title {
+  font-size: 38px;
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 16px;
+  letter-spacing: -0.02em;
+}
+
+.section-desc {
+  color: var(--text-muted);
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+/* Section 4 grid/flex content wrapper */
+.section-4-flex {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.section-4-flex > div {
+  flex: 1.2;
+}
+
+.section-4-flex > div:last-child {
+  flex: 1;
+}
+
+/* Footer Status bar layout */
+.hud-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 12px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 9px;
+  font-family: var(--font-geist-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--text-muted);
+  border-top: 1px solid var(--border-color);
+  background: rgba(3, 3, 7, 0.85);
+  z-index: 100;
+  pointer-events: auto;
+  transition: padding 0.3s ease;
+}
+
+/* Responsive Sub-tabs overflow scroll on mobile */
+.sub-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 8px;
+  overflow-x: auto;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Hide scrollbar of sub-tabs but keep scrolling active */
+.sub-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+/* Specific Section overrides for desktop layout grid alignment */
+.scroll-section.section-2 {
+  align-items: flex-end;
+}
+
+.scroll-section.section-4 {
+  align-items: center;
+}
+
+/* Responsive media queries */
+@media (max-width: 1024px) {
+  .hud-stats-container {
+    gap: 20px;
+  }
+  .hud-nodes-stat {
+    display: none !important;
+  }
+  .overlay-panel {
+    max-width: 480px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hud-header {
+    padding: 12px 16px;
+  }
+  
+  .hud-stats-container {
+    display: none !important; /* Hide telemetry details on mobile to prevent overlapping */
+  }
+
+  .section-nav {
+    display: none !important; /* Hide left vertical navigation dots */
+  }
+
+  .scroll-section {
+    padding: 70px 16px 50px 16px !important;
+    align-items: center !important;
+    justify-content: center !important;
+    height: 100vh;
+  }
+
+  .overlay-panel {
+    padding: 24px 20px !important;
+    max-width: 100% !important;
+    max-height: calc(100vh - 140px) !important;
+    overflow-y: auto !important;
+  }
+
+  .section-title {
+    font-size: 28px !important;
+    margin-bottom: 12px;
+  }
+
+  .section-desc {
+    font-size: 13px !important;
+    margin-bottom: 16px;
+    line-height: 1.5;
+  }
+
+  .section-4-flex {
+    gap: 16px;
+  }
+
+  .section-4-flex > div {
+    flex: 1 1 100% !important;
+    min-width: 100% !important;
+  }
+
+  .hud-footer {
+    padding: 8px 16px;
+    flex-direction: column;
+    gap: 4px;
+    align-items: center;
+    text-align: center;
+    background: rgba(3, 3, 7, 0.95);
+  }
+
+  .hud-footer > div:first-child,
+  .hud-footer > div:nth-child(2) {
+    display: none !important; /* Hide FPS and security status logs on narrow screens */
+  }
+
+  .modal-container {
+    padding: 24px 16px !important;
+    width: 95% !important;
+    max-height: 90vh !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-title {
+    font-size: 22px !important;
+  }
+  
+  .overlay-panel {
+    padding: 20px 16px !important;
+  }
+}
+
